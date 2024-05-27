@@ -6,9 +6,9 @@
 <br/>
 <br/>
 
-<h3 align='center'>@termsurf/kink</h3>
+<h3 align='center'>@termsurf/tail</h3>
 <p align='center'>
-  Standard Error Creation in TypeScript
+  Standard Logging in TypeScript
 </p>
 
 <br/>
@@ -18,44 +18,9 @@
 ## Installation
 
 ```
-pnpm add @termsurf/kink
-yarn add @termsurf/kink
-npm i @termsurf/kink
-```
-
-## Example
-
-```ts
-import Kink from '@termsurf/kink'
-
-const host = '@termsurf/kink'
-
-type Base = {
-  syntax_error: {}
-}
-
-type Name = keyof Base
-
-Kink.base(host, 'syntax_error', () => ({
-  code: 1,
-  note: 'Syntax error',
-}))
-
-Kink.code(host, (code: number) => code.toString(16).padStart(4, '0'))
-
-export default function kink<N extends Name>(form: N, link?: Base[N]) {
-  return new Kink(Kink.makeBase(host, form, link))
-}
-```
-
-```ts
-import kink from './example.js'
-
-try {
-  throw kink('syntax_error')
-} catch (e) {
-  console.log(e)
-}
+pnpm add @termsurf/tail
+yarn add @termsurf/tail
+npm i @termsurf/tail
 ```
 
 ## License
