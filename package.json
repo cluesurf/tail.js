@@ -1,7 +1,7 @@
 {
-  "name": "@termsurf/tail",
+  "name": "@cluesurf/tail",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./host/index.js",
   "license": "MIT",
   "files": [
@@ -23,6 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
     "concurrently": "^7.6.0",
+    "date-fns": "^3.6.0",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^24.0.0",
@@ -38,6 +39,7 @@
     "prettier": "^2.8.1",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.2",
+    "tsx": "^4.11.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {

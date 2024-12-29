@@ -1,4 +1,5 @@
 import Tail, { TailRank } from './index.js'
+import { format } from 'date-fns'
 
 const host = '@termsurf/tail'
 
@@ -20,6 +21,8 @@ Tail.base(
     link: take,
   }),
 )
+
+Tail.time(time => format(time, 'yyyy/MM/dd @ hh:mm:ssaaa'))
 
 export default function tail<N extends Name>({
   rank = 'log',

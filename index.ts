@@ -11,6 +11,8 @@ export type FillHook<T extends any = any, U extends any = any> = (
 
 export type FlowHook = (tail: TailMesh) => void
 
+export type TimeHook = (time: number) => string
+
 export type Link = Record<string, unknown>
 
 export type LoadHook<T extends any = any> = (take?: T) => Link
@@ -18,6 +20,8 @@ export type LoadHook<T extends any = any> = (take?: T) => Link
 const base: Record<string, BaseHook> = {}
 const load: Record<string, LoadHook> = {}
 const fill: Record<string, FillHook> = {}
+
+let timeHook: TimeHook = (time: number) => String(time)
 
 const flow: Record<string, FlowHook> = {
   'default:*': (tail: TailMesh) =>
@@ -38,7 +42,7 @@ export type TailMesh = {
   link?: Link
   note: string
   take?: Link
-  time: number
+  time: string
   rank: TailRank
 }
 
@@ -53,7 +57,7 @@ export default class Tail {
 
   link: Link
 
-  time: number
+  time: string
 
   rank: TailRank
 
@@ -79,6 +83,11 @@ export default class Tail {
     return Tail
   }
 
+  static time = (hook: TimeHook) => {
+    timeHook = hook
+    return Tail
+  }
+
   static make = ({
     host,
     form,
@@ -90,7 +99,7 @@ export default class Tail {
     rank: TailRank
     take?: any
   }) => {
-    const time = Date.now()
+    const time = timeHook(Date.now())
     const hook = base[`${host}:${form}`]
     if (!hook) {
       throw new Error(`Missing ${host}:${form} in Tail.base`)
